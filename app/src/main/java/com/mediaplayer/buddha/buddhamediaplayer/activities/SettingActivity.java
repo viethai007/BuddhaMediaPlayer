@@ -7,11 +7,11 @@ import android.view.MenuItem;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
 
-public class MainActivity extends ActionBarActivity {
+public class SettingActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.setting);
     }
 }
