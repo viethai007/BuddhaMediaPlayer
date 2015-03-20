@@ -36,4 +36,16 @@ public class LibraryPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 2;
     }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position) {
+            case 0:
+                return "Album";
+            case 1:
+                return "Artist";
+            default:
+                return "";
+        }
+    }
 }

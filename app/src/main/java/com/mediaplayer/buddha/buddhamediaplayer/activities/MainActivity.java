@@ -1,17 +1,13 @@
 package com.mediaplayer.buddha.buddhamediaplayer.activities;
 
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
-import com.mediaplayer.buddha.buddhamediaplayer.core.CoreActivity;
+import com.mediaplayer.buddha.buddhamediaplayer.core.CoreMenuActivity;
 import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryFragment;
 
-public class MainActivity extends CoreActivity {
+public class MainActivity extends CoreMenuActivity {
     LibraryFragment fragmentLibrary;
 
     FragmentManager fm;
@@ -27,26 +23,32 @@ public class MainActivity extends CoreActivity {
     }
 
     @Override
-    protected void Init() {
+    protected void init() {
+        super.init();
         fm = getSupportFragmentManager();
 
     }
 
     @Override
-    protected void LoadData() {
-
+    protected void loadData() {
+        super.loadData();
     }
 
     @Override
-    protected void UpdateUI() {
-        FragmentTransaction transaction = fm.beginTransaction();
-        fragmentLibrary = new LibraryFragment();
-        transaction.replace(R.id.frame, fragmentLibrary);
-        transaction.commitAllowingStateLoss();
+    protected void updateUI() {
+        super.updateUI();
+//        Intent intent = new Intent();
+//        intent.addCategory(Intent.CATEGORY_DEFAULT);
+//        intent.setClass(this, LibraryActivity.class);
+//        startActivity(intent);
+//        FragmentTransaction transaction = fm.beginTransaction();
+//        fragmentLibrary = new LibraryFragment();
+//        transaction.replace(R.id.frame, fragmentLibrary);
+//        transaction.commitAllowingStateLoss();
     }
 
     @Override
-    protected void BindEvent() {
-
+    protected void bindEvent() {
+        super.bindEvent();
     }
 }

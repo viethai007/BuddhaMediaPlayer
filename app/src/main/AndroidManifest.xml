@@ -20,5 +20,10 @@
             android:name=".activities.SettingActivity"
             android:label="@string/setting" >
         </activity>
+        <activity
+            android:name=".activities.LibraryActivity"
+            android:label="@string/library" >
+        </activity>
     </application>
+
 </manifest>
