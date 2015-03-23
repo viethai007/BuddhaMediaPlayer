@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_pager"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v4.view.PagerTabStrip
-        android:id="@+id/title_pager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp" />
-</android.support.v4.view.ViewPager>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/artist_tab"
+                style="@style/general_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artist"/>
+            <TextView
+                style="@style/horizontal_spectator"/>
+            <TextView
+                android:id="@+id/album_tab"
+                style="@style/general_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Album"/>
+            <TextView
+                style="@style/horizontal_spectator"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+    <View
+        style="@style/vertical_spectator"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

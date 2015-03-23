@@ -14,7 +14,7 @@ public class MainActivity extends CoreMenuActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.main;
+        return R.layout.menu;
     }
 
     @Override

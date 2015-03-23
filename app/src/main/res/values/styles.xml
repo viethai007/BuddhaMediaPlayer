@@ -1,4 +1,40 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     </style>
+    <style name="general_text">
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textColor">@color/foreground</item>
+    </style>
+
+    <style name="general_button">
+        <item name="android:paddingTop">@dimen/button_padding_tb</item>
+        <item name="android:paddingBottom">@dimen/button_padding_tb</item>
+        <item name="android:paddingLeft">@dimen/button_padding_lr</item>
+        <item name="android:paddingRight">@dimen/button_padding_lr</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textColor">@color/foreground</item>
+    </style>
+
+    <style name="general_tab">
+        <item name="android:paddingTop">@dimen/tab_padding_tb</item>
+        <item name="android:paddingBottom">@dimen/tab_padding_tb</item>
+        <item name="android:paddingLeft">@dimen/tab_padding_lr</item>
+        <item name="android:paddingRight">@dimen/tab_padding_lr</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textColor">@color/foreground</item>
+    </style>
+
+    <style name="horizontal_spectator">
+        <item name="android:layout_width">@dimen/spectator_thick</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/spectator</item>
+    </style>
+
+    <style name="vertical_spectator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/spectator_thick</item>
+        <item name="android:background">@color/spectator</item>
+    </style>
 </resources>

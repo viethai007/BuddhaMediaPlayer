@@ -1,5 +1,13 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="general_text">16dip</dimen>
+
+    <dimen name="button_padding_tb">5dp</dimen>
+    <dimen name="button_padding_lr">10dp</dimen>
+
+    <dimen name="tab_padding_tb">5dp</dimen>
+    <dimen name="tab_padding_lr">15dp</dimen>
+
+    <dimen name="spectator_thick">2dp</dimen>
+
+    <dimen name="divisor_spacing">5dp</dimen>
 </resources>

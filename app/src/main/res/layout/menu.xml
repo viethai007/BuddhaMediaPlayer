@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
@@ -24,18 +25,21 @@
             <!--android:choiceMode="singleChoice"></ListView>-->
         <TextView
             android:id="@+id/library_button"
+            style="@style/general_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="Library"/>
         <TextView
             android:id="@+id/playlist_button"
+            style="@style/general_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="My Playlist"/>
         <TextView
             android:id="@+id/setting_button"
+            style="@style/general_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"

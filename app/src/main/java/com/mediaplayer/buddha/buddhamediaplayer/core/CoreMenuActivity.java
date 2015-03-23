@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -30,6 +32,20 @@ public abstract class CoreMenuActivity extends CoreActivity {
 
     protected ArrayList<DrawerItemModel> listDrawerItem;
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.menu;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                toggleDrawer();
+                break;
+        }
+        return true;
+    }
 
     @Override
     protected void init() {
@@ -58,6 +74,9 @@ public abstract class CoreMenuActivity extends CoreActivity {
 
     @Override
     protected void updateUI() {
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
 //        adapterMenu = new DrawerListAdapter(this, listDrawerItem);
 //        listviewMenu.setAdapter(adapterMenu);
     }
@@ -105,5 +124,25 @@ public abstract class CoreMenuActivity extends CoreActivity {
                 context.startActivity(intent);
             }
         });
+    }
+
+    protected void openDrawer() {
+        drawer.openDrawer(Gravity.START);
+    }
+
+    protected void closeDrawer() {
+        drawer.closeDrawer(Gravity.START);
+    }
+
+    protected void toggleDrawer() {
+        if(isDrawerOpen()) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+    }
+
+    protected boolean isDrawerOpen() {
+        return drawer.isDrawerOpen(Gravity.START);
     }
 }
