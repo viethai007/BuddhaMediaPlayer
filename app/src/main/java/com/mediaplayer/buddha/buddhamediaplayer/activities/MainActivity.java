@@ -20,6 +20,7 @@ public class MainActivity extends CoreMenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activityType = ActivityTypeEnum.HOME;
     }
 
     @Override

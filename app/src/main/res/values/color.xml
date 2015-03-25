@@ -3,6 +3,7 @@
     <color name="foreground">#000</color>
 
     <color name="spectator">#0000FF</color>
+    <color name="spectator_alternative">#DFDFDF</color>
 
     <color name="inverted_background">#000</color>
     <color name="inverted_foreground">#FFF</color>

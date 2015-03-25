@@ -9,7 +9,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
             <TextView
                 android:id="@+id/artist_tab"
                 style="@style/general_tab"
@@ -17,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:text="Artist"/>
             <TextView
-                style="@style/horizontal_spectator"/>
+                style="@style/horizontal_spectator_alternative"/>
             <TextView
                 android:id="@+id/album_tab"
                 style="@style/general_tab"
@@ -25,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="Album"/>
             <TextView
-                style="@style/horizontal_spectator"/>
+                style="@style/horizontal_spectator_alternative"/>
         </LinearLayout>
     </HorizontalScrollView>
     <View

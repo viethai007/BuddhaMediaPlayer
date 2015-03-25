@@ -18,6 +18,8 @@ public class LibraryFragment extends CoreFragment {
 
     private LibraryPagerAdapter adapterFragment;
 
+    private int selectedTabIndex;
+
     public LibraryFragment() {
     }
 
@@ -61,7 +63,7 @@ public class LibraryFragment extends CoreFragment {
 
             @Override
             public void onPageSelected(int position) {
-
+                selectedTabIndex = position;
             }
 
             @Override

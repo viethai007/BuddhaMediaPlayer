@@ -18,11 +18,20 @@
         android:layout_gravity="start"
         android:clickable="false"
         android:background="#FFFFFF">
-        <!--<ListView-->
-            <!--android:id="@+id/menu_list"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:choiceMode="singleChoice"></ListView>-->
+        <TextView
+            android:id="@+id/home_button"
+            style="@style/general_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Home"/>
+        <TextView
+            android:id="@+id/now_playing_button"
+            style="@style/general_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Now Playing"/>
         <TextView
             android:id="@+id/library_button"
             style="@style/general_button"

@@ -37,4 +37,16 @@
         <item name="android:layout_height">@dimen/spectator_thick</item>
         <item name="android:background">@color/spectator</item>
     </style>
+
+    <style name="horizontal_spectator_alternative">
+        <item name="android:layout_width">@dimen/spectator_thick</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/spectator_alternative</item>
+    </style>
+
+    <style name="vertical_spectator_alternative">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/spectator_thick</item>
+        <item name="android:background">@color/spectator_alternative</item>
+    </style>
 </resources>

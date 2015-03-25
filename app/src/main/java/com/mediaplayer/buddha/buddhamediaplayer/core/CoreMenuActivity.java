@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
 import com.mediaplayer.buddha.buddhamediaplayer.activities.LibraryActivity;
+import com.mediaplayer.buddha.buddhamediaplayer.activities.MainActivity;
+import com.mediaplayer.buddha.buddhamediaplayer.activities.PlayerActivity;
 import com.mediaplayer.buddha.buddhamediaplayer.adapters.DrawerListAdapter;
 import com.mediaplayer.buddha.buddhamediaplayer.models.DrawerItemModel;
 
@@ -23,7 +25,9 @@ public abstract class CoreMenuActivity extends CoreActivity {
     protected Activity context;
     protected DrawerLayout drawer;
     protected LinearLayout panelMenu;
-    protected ListView listviewMenu;
+//    protected ListView listviewMenu;
+    protected TextView buttonHome;
+    protected TextView buttonNowPlaying;
     protected TextView buttonLibrary;
     protected TextView buttonPlaylist;
     protected TextView buttonSettings;
@@ -31,6 +35,8 @@ public abstract class CoreMenuActivity extends CoreActivity {
     protected DrawerListAdapter adapterMenu;
 
     protected ArrayList<DrawerItemModel> listDrawerItem;
+
+    protected ActivityTypeEnum activityType = ActivityTypeEnum.OTHER;
 
     @Override
     protected int getLayoutId() {
@@ -53,6 +59,8 @@ public abstract class CoreMenuActivity extends CoreActivity {
         drawer = (DrawerLayout) findViewById(R.id.drawer);
         panelMenu = (LinearLayout) findViewById(R.id.menu_panel);
         //listviewMenu = (ListView) findViewById(R.id.menu_list);
+        buttonHome = (TextView) findViewById(R.id.home_button);
+        buttonNowPlaying = (TextView) findViewById(R.id.now_playing_button);
         buttonLibrary = (TextView) findViewById(R.id.library_button);
         buttonPlaylist = (TextView) findViewById(R.id.playlist_button);
         buttonSettings = (TextView) findViewById(R.id.setting_button);
@@ -115,9 +123,38 @@ public abstract class CoreMenuActivity extends CoreActivity {
 //            }
 //        });
 
+        buttonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(activityType == ActivityTypeEnum.HOME) {
+                    return;
+                }
+                Intent intent = new Intent();
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                intent.setClass(context, MainActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        buttonNowPlaying.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(activityType == ActivityTypeEnum.NOW_PLAYING) {
+                    return;
+                }
+                Intent intent = new Intent();
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                intent.setClass(context, PlayerActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
         buttonLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(activityType == ActivityTypeEnum.LIBRARY) {
+                    return;
+                }
                 Intent intent = new Intent();
                 intent.addCategory(Intent.CATEGORY_DEFAULT);
                 intent.setClass(context, LibraryActivity.class);
@@ -144,5 +181,14 @@ public abstract class CoreMenuActivity extends CoreActivity {
 
     protected boolean isDrawerOpen() {
         return drawer.isDrawerOpen(Gravity.START);
+    }
+
+    protected enum ActivityTypeEnum {
+        HOME,
+        NOW_PLAYING,
+        LIBRARY,
+        PLAYLIST,
+        SETTING,
+        OTHER
     }
 }
