@@ -6,28 +6,22 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SeekBar;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
 import com.mediaplayer.buddha.buddhamediaplayer.core.CoreFragment;
 
-public class PlayerFragment extends CoreFragment {
-    private SeekBar seekbar;
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class LibraryLocalFragment extends CoreFragment {
 
-    public PlayerFragment() {
+
+    public LibraryLocalFragment() {
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.player;
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.player, container, false);
-        return view;
+        return R.layout.library_local;
     }
 
     @Override
@@ -49,6 +43,4 @@ public class PlayerFragment extends CoreFragment {
     protected void BindEvent() {
 
     }
-
-
 }

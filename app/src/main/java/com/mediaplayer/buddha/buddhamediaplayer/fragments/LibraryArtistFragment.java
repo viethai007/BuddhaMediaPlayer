@@ -18,7 +18,7 @@ public class LibraryArtistFragment extends CoreFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.library_album;
+        return R.layout.library_artist;
     }
 
     @Override

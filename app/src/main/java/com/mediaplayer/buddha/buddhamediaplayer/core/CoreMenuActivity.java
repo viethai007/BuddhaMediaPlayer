@@ -2,11 +2,13 @@ package com.mediaplayer.buddha.buddhamediaplayer.core;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -25,7 +27,6 @@ public abstract class CoreMenuActivity extends CoreActivity {
     protected Activity context;
     protected DrawerLayout drawer;
     protected LinearLayout panelMenu;
-//    protected ListView listviewMenu;
     protected TextView buttonHome;
     protected TextView buttonNowPlaying;
     protected TextView buttonLibrary;
@@ -44,6 +45,11 @@ public abstract class CoreMenuActivity extends CoreActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -58,7 +64,6 @@ public abstract class CoreMenuActivity extends CoreActivity {
         context = this;
         drawer = (DrawerLayout) findViewById(R.id.drawer);
         panelMenu = (LinearLayout) findViewById(R.id.menu_panel);
-        //listviewMenu = (ListView) findViewById(R.id.menu_list);
         buttonHome = (TextView) findViewById(R.id.home_button);
         buttonNowPlaying = (TextView) findViewById(R.id.now_playing_button);
         buttonLibrary = (TextView) findViewById(R.id.library_button);
@@ -82,11 +87,10 @@ public abstract class CoreMenuActivity extends CoreActivity {
 
     @Override
     protected void updateUI() {
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setIcon(R.drawable.logo);
         actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
-//        adapterMenu = new DrawerListAdapter(this, listDrawerItem);
-//        listviewMenu.setAdapter(adapterMenu);
     }
 
     @Override
@@ -94,34 +98,12 @@ public abstract class CoreMenuActivity extends CoreActivity {
         drawer.setDrawerListener(new ActionBarDrawerToggle(context, drawer, R.string.drawer_open, R.string.drawer_close) {
              public void onDrawerClosed(View view) {
                  super.onDrawerClosed(view);
-//                getActionBar().setTitle(mTitle);
-//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
              }
 
              public void onDrawerOpened(View drawerView) {
                  super.onDrawerOpened(drawerView);
-//                getActionBar().setTitle(mDrawerTitle);
-//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
              }
          });
-
-//        listviewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent();
-//                intent.addCategory(Intent.CATEGORY_DEFAULT);
-//                switch (position) {
-//                    case 1:
-//                        break;
-//                    case 2:
-//                        break;
-//                    default:
-//                        intent.setClass(context, LibraryActivity.class);
-//                        break;
-//                }
-//                context.startActivity(intent);
-//            }
-//        });
 
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,6 +6,16 @@
         <item name="android:textColor">@color/foreground</item>
     </style>
 
+    <style name="track_title_text">
+        <item name="android:textSize">@dimen/track_title_text</item>
+        <item name="android:textColor">@color/foreground</item>
+    </style>
+
+    <style name="track_artist_text">
+        <item name="android:textSize">@dimen/track_artist_text</item>
+        <item name="android:textColor">@color/foreground</item>
+    </style>
+
     <style name="general_button">
         <item name="android:paddingTop">@dimen/button_padding_tb</item>
         <item name="android:paddingBottom">@dimen/button_padding_tb</item>

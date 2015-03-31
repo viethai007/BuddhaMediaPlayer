@@ -28,6 +28,14 @@
                 android:text="Album"/>
             <TextView
                 style="@style/horizontal_spectator_alternative"/>
+            <TextView
+                android:id="@+id/local_tab"
+                style="@style/general_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Local"/>
+            <TextView
+                style="@style/horizontal_spectator_alternative"/>
         </LinearLayout>
     </HorizontalScrollView>
     <View

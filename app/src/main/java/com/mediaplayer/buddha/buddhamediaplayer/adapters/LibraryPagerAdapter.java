@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryAlbumFragment;
 import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryArtistFragment;
+import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryLocalFragment;
 
 import java.util.ArrayList;
 
@@ -20,10 +21,13 @@ public class LibraryPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment;
         switch (position) {
             case 0:
-                fragment = new LibraryAlbumFragment();
+                fragment = new LibraryArtistFragment();
                 break;
             case 1:
-                fragment = new LibraryArtistFragment();
+                fragment = new LibraryAlbumFragment();
+                break;
+            case 2:
+                fragment = new LibraryLocalFragment();
                 break;
             default:
                 fragment = new Fragment();
@@ -34,18 +38,20 @@ public class LibraryPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "Album";
-            case 1:
-                return "Artist";
-            default:
-                return "";
-        }
-    }
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        switch (position) {
+//            case 0:
+//                return "Album";
+//            case 1:
+//                return "Artist";
+//            case 2:
+//                return "Local";
+//            default:
+//                return "";
+//        }
+//    }
 }
