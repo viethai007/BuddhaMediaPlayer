@@ -1,22 +1,26 @@
 <resources>
-    <dimen name="general_text">17dip</dimen>
-    <dimen name="track_title_text">17dip</dimen>
-    <dimen name="track_artist_text">15dip</dimen>
+    <dimen name="general_text">20dip</dimen>
+    <dimen name="button_text">20dip</dimen>
+    <dimen name="tab_text">19dip</dimen>
+    <dimen name="menu_text">24dip</dimen>
+    <dimen name="track_title_text">20dip</dimen>
+    <dimen name="track_artist_text">17dip</dimen>
 
     <dimen name="button_padding_tb">5dp</dimen>
-    <dimen name="button_padding_lr">10dp</dimen>
-
-    <dimen name="tab_padding_tb">2dp</dimen>
+    <dimen name="button_padding_lr">15dp</dimen>
+    <dimen name="tab_padding_t">6dp</dimen>
+    <dimen name="tab_padding_b">10dp</dimen>
     <dimen name="tab_padding_lr">15dp</dimen>
+    <dimen name="menu_padding_tb">8dp</dimen>
+    <dimen name="menu_padding_lr">15dp</dimen>
+
+    <dimen name="track_cover_width">48dp</dimen>
+    <dimen name="track_cover_height">48dp</dimen>
 
     <dimen name="spectator_thick">2dp</dimen>
-
+    <dimen name="tab_indicator_thick">4dp</dimen>
     <dimen name="divisor_spacing">5dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="listview_item_spacing">6dp</dimen>
 
-    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
-         https://developer.android.com/design/patterns/navigation-drawer.html -->
-    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="navigation_drawer_width">280dp</dimen>
 </resources>

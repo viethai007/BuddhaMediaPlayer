@@ -13,45 +13,55 @@
     <LinearLayout
         android:id="@+id/menu_panel"
         android:orientation="vertical"
-        android:layout_width="240dp"
+        android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:clickable="false"
         android:background="#FFFFFF">
         <TextView
             android:id="@+id/home_button"
-            style="@style/general_button"
+            style="@style/menu_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="Home"/>
+        <View
+            style="@style/vertical_spectator_alternative"></View>
         <TextView
             android:id="@+id/now_playing_button"
-            style="@style/general_button"
+            style="@style/menu_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="Now Playing"/>
+        <View
+            style="@style/vertical_spectator_alternative"></View>
         <TextView
             android:id="@+id/library_button"
-            style="@style/general_button"
+            style="@style/menu_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="Library"/>
+        <View
+            style="@style/vertical_spectator_alternative"></View>
         <TextView
             android:id="@+id/playlist_button"
-            style="@style/general_button"
+            style="@style/menu_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="My Playlist"/>
+        <View
+            style="@style/vertical_spectator_alternative"></View>
         <TextView
             android:id="@+id/setting_button"
-            style="@style/general_button"
+            style="@style/menu_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:text="Settings"/>
+        <View
+            style="@style/vertical_spectator_alternative"></View>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

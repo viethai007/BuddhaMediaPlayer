@@ -13,12 +13,10 @@ import java.util.ArrayList;
 
 public class LocalMediaService {
     private static LocalMediaService _instance;
-    private MediaMetadataRetriever mediaMetadataRetriever;
 
     private ArrayList<String> listAllowedExtension;
 
     private LocalMediaService() {
-        mediaMetadataRetriever = new MediaMetadataRetriever();
         listAllowedExtension = RX.Array.AllowedExtension;
     }
 
@@ -32,12 +30,13 @@ public class LocalMediaService {
     public ArrayList<MediaPlayerTrack> getAllTrack() {
         ArrayList<MediaPlayerTrack> result = new ArrayList<MediaPlayerTrack>();
         File musicDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
-        String[] arrayMediaFile = musicDir.list();
-        for(String mediaFile:arrayMediaFile) {
-            if(!checkFileName(mediaFile)) {
+        File[] arrayMediaFile = musicDir.listFiles();
+        for(File mediaFile:arrayMediaFile) {
+            if(!checkFileName(mediaFile.getName())) {
                 continue;
             }
-            MediaPlayerTrack track = readMeta(mediaFile);
+
+            MediaPlayerTrack track = readMeta(mediaFile.getAbsolutePath());
             result.add(track);
         }
         return result;
@@ -45,6 +44,7 @@ public class LocalMediaService {
 
     private MediaPlayerTrack readMeta(String fullPath) {
         MediaPlayerTrack result = new MediaPlayerTrack();
+        MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
         mediaMetadataRetriever.setDataSource(fullPath);
         result.Title = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
         result.Artist = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);

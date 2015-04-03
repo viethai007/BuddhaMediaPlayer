@@ -4,7 +4,6 @@ import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
-import com.mediaplayer.buddha.buddhamediaplayer.core.CoreMenuActivity;
 import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryFragment;
 
 public class MainActivity extends CoreMenuActivity {

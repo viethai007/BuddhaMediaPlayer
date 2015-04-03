@@ -1,4 +1,4 @@
-package com.mediaplayer.buddha.buddhamediaplayer.models;
+package com.mediaplayer.buddha.buddhamediaplayer.support.models;
 
 public class DrawerItemModel {
     public int imageResource;

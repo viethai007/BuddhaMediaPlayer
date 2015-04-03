@@ -1,4 +1,4 @@
-package com.mediaplayer.buddha.buddhamediaplayer.core;
+package com.mediaplayer.buddha.buddhamediaplayer.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,18 +8,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
-import com.mediaplayer.buddha.buddhamediaplayer.activities.LibraryActivity;
-import com.mediaplayer.buddha.buddhamediaplayer.activities.MainActivity;
-import com.mediaplayer.buddha.buddhamediaplayer.activities.PlayerActivity;
-import com.mediaplayer.buddha.buddhamediaplayer.adapters.DrawerListAdapter;
-import com.mediaplayer.buddha.buddhamediaplayer.models.DrawerItemModel;
+import com.mediaplayer.buddha.buddhamediaplayer.support.adapters.DrawerListAdapter;
+import com.mediaplayer.buddha.buddhamediaplayer.support.models.DrawerItemModel;
 
 import java.util.ArrayList;
 

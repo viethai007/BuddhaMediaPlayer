@@ -6,6 +6,7 @@
         <item name="android:textColor">@color/foreground</item>
     </style>
 
+
     <style name="track_title_text">
         <item name="android:textSize">@dimen/track_title_text</item>
         <item name="android:textColor">@color/foreground</item>
@@ -22,19 +23,35 @@
         <item name="android:paddingLeft">@dimen/button_padding_lr</item>
         <item name="android:paddingRight">@dimen/button_padding_lr</item>
         <item name="android:background">@color/background</item>
-        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textSize">@dimen/button_text</item>
         <item name="android:textColor">@color/foreground</item>
     </style>
 
     <style name="general_tab">
-        <item name="android:paddingTop">@dimen/tab_padding_tb</item>
-        <item name="android:paddingBottom">@dimen/tab_padding_tb</item>
+        <item name="android:paddingTop">@dimen/tab_padding_t</item>
+        <item name="android:paddingBottom">@dimen/tab_padding_b</item>
         <item name="android:paddingLeft">@dimen/tab_padding_lr</item>
         <item name="android:paddingRight">@dimen/tab_padding_lr</item>
         <item name="android:background">@color/background</item>
-        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/tab_text</item>
         <item name="android:textColor">@color/foreground</item>
     </style>
+
+    <style name="general_tab.selected" parent="general_tab">
+        <item name="android:background">@drawable/selected_tab_indicator</item>
+    </style>
+
+    <style name="menu_button">
+        <item name="android:paddingTop">@dimen/menu_padding_tb</item>
+        <item name="android:paddingBottom">@dimen/menu_padding_tb</item>
+        <item name="android:paddingLeft">@dimen/menu_padding_lr</item>
+        <item name="android:paddingRight">@dimen/menu_padding_lr</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:textSize">@dimen/menu_text</item>
+        <item name="android:textColor">@color/foreground</item>
+    </style>
+
 
     <style name="horizontal_spectator">
         <item name="android:layout_width">@dimen/spectator_thick</item>

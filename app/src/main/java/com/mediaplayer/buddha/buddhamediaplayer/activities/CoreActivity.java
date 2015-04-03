@@ -1,4 +1,4 @@
-package com.mediaplayer.buddha.buddhamediaplayer.core;
+package com.mediaplayer.buddha.buddhamediaplayer.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;

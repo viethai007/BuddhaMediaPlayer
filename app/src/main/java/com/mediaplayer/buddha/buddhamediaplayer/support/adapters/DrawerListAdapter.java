@@ -1,4 +1,4 @@
-package com.mediaplayer.buddha.buddhamediaplayer.adapters;
+package com.mediaplayer.buddha.buddhamediaplayer.support.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
-import com.mediaplayer.buddha.buddhamediaplayer.models.DrawerItemModel;
+import com.mediaplayer.buddha.buddhamediaplayer.support.models.DrawerItemModel;
 
 import java.util.ArrayList;
 
