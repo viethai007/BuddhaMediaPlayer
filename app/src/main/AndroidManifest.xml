@@ -28,13 +28,14 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activities.LibraryActivity"
-            android:label="@string/library"
+            android:name=".activities.NowPlayingActivity"
+            android:label="@string/now_playing"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activities.PlayerActivity"
-            android:label="@string/title_activity_player" >
+            android:name=".activities.LibraryActivity"
+            android:label="@string/library"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

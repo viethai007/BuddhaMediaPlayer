@@ -4,21 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/title_text"
-            style="@style/track_title_text"
-            android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/spectator_alternative" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Shivers" />
-        <TextView
-            android:id="@+id/artist_text"
-            style="@style/track_artist_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Armin van Buuren" />
+            android:padding="@dimen/divisor_spacing"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/title_text"
+                style="@style/track_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Track" />
+            <TextView
+                android:id="@+id/artist_text"
+                style="@style/track_artist_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Track" />
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/switch_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_playlist"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"

@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
-import com.mediaplayer.buddha.buddhamediaplayer.support.adapters.DrawerListAdapter;
+import com.mediaplayer.buddha.buddhamediaplayer.adapters.DrawerListAdapter;
 import com.mediaplayer.buddha.buddhamediaplayer.support.models.DrawerItemModel;
 
 import java.util.ArrayList;
@@ -109,6 +109,7 @@ public abstract class CoreMenuActivity extends CoreActivity {
                 intent.addCategory(Intent.CATEGORY_DEFAULT);
                 intent.setClass(context, MainActivity.class);
                 context.startActivity(intent);
+                closeDrawer();
             }
         });
 
@@ -120,8 +121,9 @@ public abstract class CoreMenuActivity extends CoreActivity {
                 }
                 Intent intent = new Intent();
                 intent.addCategory(Intent.CATEGORY_DEFAULT);
-                intent.setClass(context, PlayerActivity.class);
+                intent.setClass(context, NowPlayingActivity.class);
                 context.startActivity(intent);
+                closeDrawer();
             }
         });
 
@@ -135,6 +137,7 @@ public abstract class CoreMenuActivity extends CoreActivity {
                 intent.addCategory(Intent.CATEGORY_DEFAULT);
                 intent.setClass(context, LibraryActivity.class);
                 context.startActivity(intent);
+                closeDrawer();
             }
         });
     }

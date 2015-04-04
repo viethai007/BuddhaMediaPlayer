@@ -2,6 +2,7 @@ package com.mediaplayer.buddha.buddhamediaplayer.support;
 
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -20,25 +21,27 @@ public class MediaPlayerSuite {
     private Handler handlerUpdateSeekBar;
 
     private ArrayList<MediaPlayerTrack> listTrack;
-    private MediaPlayerTrack track;
 
     private OnMessageListener messageListener;
     private OnPlaybackStateChangeListener playbackStateChangeListener;
 
-    private boolean __isInitialized = false;
-    private boolean __playAfterTrackChange = false;
-    private boolean __isSeeking = false;
-    private int __currentIndex = -1;
-    private int __lastPosition = 0;
-    private int __seekingPosition = 0;
+    private MediaPlayerTrack __track = null;
+    private boolean __is_initialized = false;
+    private boolean __play_after_track_change = false;
+    private boolean __is_seeking = false;
+    private int __current_index = -1;
+    private int __last_position = 0;
+    private int __seeking_position = 0;
 
     private MediaPlayerSuite() {
+        listTrack = new ArrayList<MediaPlayerTrack>();
+        __track = new MediaPlayerTrack();
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                if(__currentIndex > -2 && __currentIndex < listTrack.size() - 1) {
-                    __playAfterTrackChange = true;
+                if(__current_index > -2 && __current_index < listTrack.size() - 1) {
+                    __play_after_track_change = true;
                     startNextPlayback();
                 } else {
                     stopPlayback();
@@ -57,12 +60,19 @@ public class MediaPlayerSuite {
         handlerUpdateSeekBar = new Handler();
     }
 
+    public static MediaPlayerSuite getInstance() {
+        if(instance == null) {
+            instance = new MediaPlayerSuite();
+        }
+        return instance;
+    }
+
     public static MediaPlayerSuite getInstance(SeekBar seeker, TextView currentTimeText) {
         if(instance == null) {
             instance = new MediaPlayerSuite();
         }
         instance.setSeekBar(seeker);
-        instance.setCurrentTimeText(currentTimeText);
+        instance.setTimeIndicator(currentTimeText);
 
         return instance;
     }
@@ -90,7 +100,7 @@ public class MediaPlayerSuite {
         }
     }
 
-    private void setCurrentTimeText(TextView lblCurrentTime) {
+    public void setTimeIndicator(TextView lblCurrentTime) {
         this.lblCurrentTime = lblCurrentTime;
     }
 
@@ -100,46 +110,52 @@ public class MediaPlayerSuite {
 
     public void setPlayList(ArrayList<MediaPlayerTrack> listTrack) {
         this.listTrack = listTrack;
-        this.__currentIndex = this.listTrack.indexOf(this.track);
+        __current_index = this.listTrack.indexOf(__track);
     }
 
-    private void setSeekBar(SeekBar seeker) {
+    public void setSeekBar(SeekBar seeker) {
         this.seeker = seeker;
         if(seeker != null) {
+            if(__is_initialized) {
+                int second = mediaPlayer.getDuration() / 1000;
+                seeker.setMax(second);
+            }
+            seeker.setVisibility(View.INVISIBLE);
             seeker.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(__isSeeking) {
-                        __seekingPosition = progress * 1000;
-                        setCurrentTime(__seekingPosition);
+                    if(__is_seeking) {
+                        __seeking_position = progress * 1000;
+                        setCurrentTime(__seeking_position);
                     }
                 }
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-                    __isSeeking = true;
+                    __is_seeking = true;
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    __isSeeking = false;
-                    mediaPlayer.seekTo(__seekingPosition);
+                    __is_seeking = false;
+                    mediaPlayer.seekTo(__seeking_position);
+                    __last_position = __seeking_position;
                 }
             });
         }
     }
 
-    public void setTrack(MediaPlayerTrack trackUri) {
-        this.track = trackUri;
-        this.__currentIndex = this.listTrack.indexOf(this.track);
+    public void setTrack(MediaPlayerTrack track) {
+        __track = track;
+        __current_index = this.listTrack.indexOf(__track);
         if(isPlaying() == true) {
-            __playAfterTrackChange = true;
+            __play_after_track_change = true;
         }
 
         try {
-            if (__isInitialized == true) {
+            if (__is_initialized) {
                 mediaPlayer.reset();
-                __isInitialized = false;
+                __is_initialized = false;
             }
         }
         catch (Exception e) {
@@ -147,67 +163,83 @@ public class MediaPlayerSuite {
         }
 
         try {
-            mediaPlayer.setDataSource(track.Uri);
+            mediaPlayer.setDataSource(__track.Uri);
             mediaPlayer.prepare();
-            __isInitialized = true;
-            __lastPosition = 0;
+            __is_initialized = true;
+            __last_position = 0;
             int second = mediaPlayer.getDuration() / 1000;
             if(seeker != null) {
                 seeker.setMax(second);
             }
 
             onMessage("Track prepared");
-
-            if(__playAfterTrackChange == true) {
-                __playAfterTrackChange = false;
+            onSetTrack(__track);
+            if(__play_after_track_change) {
+                __play_after_track_change = false;
                 startPlayback();
             }
         } catch (IOException e) {
-            __isInitialized = false;
+            __is_initialized = false;
         }
     }
 
+    public MediaPlayerTrack getTrack() {
+        return __track;
+    }
+
     public void startPlayback() {
-        mediaPlayer.seekTo(__lastPosition);
+        if(__track.Uri == "") {
+            onMessage("No Track");
+            return;
+        }
+
+        if(seeker != null) {
+            seeker.setVisibility(View.VISIBLE);
+        }
+
+        mediaPlayer.seekTo(__last_position);
         mediaPlayer.start();
         refreshTimeIndicator();
-        track.Position = __lastPosition;
-        onStartPlayback(track);
+        __track.Position = __last_position;
+        onStartPlayback(__track);
     }
 
     public void pausePlayback() {
         if(mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
         }
-        track.Position = __lastPosition;
-        onPausePlayback(track);
+        __track.Position = __last_position;
+        onPausePlayback(__track);
     }
 
     public void stopPlayback() {
         if(mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
-            __lastPosition = 0;
+            __last_position = 0;
         }
-        track.Position = __lastPosition;
-        onPausePlayback(track);
+        if(seeker != null) {
+            seeker.setVisibility(View.INVISIBLE);
+        }
+        __track.Position = __last_position;
+        onStopPlayback(__track);
     }
 
     public void startPrevPlayback() {
-        if(__currentIndex > 0 && __currentIndex < listTrack.size() + 1) {
-            MediaPlayerTrack prevTrackUri = listTrack.get(__currentIndex - 1);
+        if(__current_index > 0 && __current_index < listTrack.size() + 1) {
+            MediaPlayerTrack prevTrackUri = listTrack.get(__current_index - 1);
             setTrack(prevTrackUri);
         }
     }
 
     public void startNextPlayback() {
-        if(__currentIndex > -2 &&  __currentIndex < listTrack.size() - 1) {
-            MediaPlayerTrack nextTrackUri = listTrack.get(__currentIndex + 1);
+        if(__current_index > -2 &&  __current_index < listTrack.size() - 1) {
+            MediaPlayerTrack nextTrackUri = listTrack.get(__current_index + 1);
             setTrack(nextTrackUri);
         }
     }
 
     private void refreshTimeIndicator() {
-        if (mediaPlayer == null || __isSeeking == true) {
+        if (mediaPlayer == null || __is_seeking == true) {
             // Do nothing
         } else {
             int position = mediaPlayer.getCurrentPosition();
@@ -235,6 +267,7 @@ public class MediaPlayerSuite {
     }
 
     public interface OnPlaybackStateChangeListener {
+        void onSetTrack(MediaPlayerTrack track);
         void onStartPlayback(MediaPlayerTrack track);
         void onPausePlayback(MediaPlayerTrack track);
         void onStopPlayback(MediaPlayerTrack track);
@@ -242,6 +275,12 @@ public class MediaPlayerSuite {
 
     public void setOnPlaybackStateChange(OnPlaybackStateChangeListener l) {
         this.playbackStateChangeListener = l;
+    }
+
+    private void onSetTrack(MediaPlayerTrack track) {
+        if(playbackStateChangeListener != null) {
+            playbackStateChangeListener.onSetTrack(track);
+        }
     }
 
     private void onStartPlayback(MediaPlayerTrack track) {

@@ -9,7 +9,7 @@
     <dimen name="button_padding_tb">5dp</dimen>
     <dimen name="button_padding_lr">15dp</dimen>
     <dimen name="tab_padding_t">6dp</dimen>
-    <dimen name="tab_padding_b">10dp</dimen>
+    <dimen name="tab_padding_b">8dp</dimen>
     <dimen name="tab_padding_lr">15dp</dimen>
     <dimen name="menu_padding_tb">8dp</dimen>
     <dimen name="menu_padding_lr">15dp</dimen>

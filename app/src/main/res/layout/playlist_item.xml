@@ -7,12 +7,14 @@
     <ImageView
         android:id="@+id/cover_image"
         android:layout_width="@dimen/track_cover_width"
-        android:layout_height="@dimen/track_cover_height" />
+        android:layout_height="@dimen/track_cover_height"
+        android:background="@drawable/no_cover" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/divisor_spacing" >
         <TextView
             android:id="@+id/title_text"
             style="@style/track_title_text"

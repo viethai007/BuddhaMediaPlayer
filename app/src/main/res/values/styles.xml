@@ -39,7 +39,7 @@
     </style>
 
     <style name="general_tab.selected" parent="general_tab">
-        <item name="android:background">@drawable/selected_tab_indicator</item>
+        <item name="android:background">@drawable/tab_indicator_selected</item>
     </style>
 
     <style name="menu_button">

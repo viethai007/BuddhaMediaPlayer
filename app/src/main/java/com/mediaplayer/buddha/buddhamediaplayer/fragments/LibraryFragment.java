@@ -2,7 +2,6 @@ package com.mediaplayer.buddha.buddhamediaplayer.fragments;
 
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 import com.mediaplayer.buddha.buddhamediaplayer.R;
 import com.mediaplayer.buddha.buddhamediaplayer.support.TextViewExpress;
-import com.mediaplayer.buddha.buddhamediaplayer.support.adapters.LibraryPagerAdapter;
+import com.mediaplayer.buddha.buddhamediaplayer.adapters.LibraryPagerAdapter;
 
 import java.util.ArrayList;
 
@@ -64,8 +63,7 @@ public class LibraryFragment extends CoreFragment {
 
     @Override
     protected void UpdateUI() {
-        FragmentManager fm = getFragmentManager();
-        adapterFragment = new LibraryPagerAdapter(fm);
+        adapterFragment = new LibraryPagerAdapter(fragmentManager);
         pagerFragment.setAdapter(adapterFragment);
         setSelectedTab(0);
     }
@@ -108,8 +106,8 @@ public class LibraryFragment extends CoreFragment {
 
     private void setSelectedTab(int index) {
         for(TextView tab:listTabIndicator) {
-             _TextViewExpress.setBackgroundResource(tab, R.drawable.normal_tab_indicator);
+             _TextViewExpress.setBackgroundResource(tab, R.drawable.tab_indicator_normal);
         }
-        _TextViewExpress.setBackgroundResource(listTabIndicator.get(index), R.drawable.selected_tab_indicator);
+        _TextViewExpress.setBackgroundResource(listTabIndicator.get(index), R.drawable.tab_indicator_selected);
     }
 }
