@@ -1,8 +1,5 @@
 package com.mediaplayer.buddha.buddhamediaplayer.support.models;
 
-/**
- * Created by PRECiSN on 2015-03-31.
- */
 public class MediaPlayerTrack {
     public String Uri;
     public String Title;
@@ -10,6 +7,11 @@ public class MediaPlayerTrack {
     public String Album;
     public int Position; // in msecond
     public int Length; // in msecond
+    public boolean IsPlaying;
+
+    public boolean isEmpty() {
+        return (Title == null || Title == "") && (Artist == null || Artist == "");
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnPlaybackStateChangeListener {
     private TextView lblTrackTitle;
     private TextView lblTrackArtist;
+    private ImageButton btnSwitch;
     private TextView lblTimeIndicator;
     private SeekBar skbProgress;
     private ImageButton btnPrev;
@@ -26,24 +27,24 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
 
     private ArrayList<MediaPlayerTrack> listTrack;
 
+    private OnSwitchListener _SwitchListener;
+
     public PlayerFragment() {
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        _MediaPlayerSuite.setSeekBar(skbProgress);
-        _MediaPlayerSuite.setTimeIndicator(lblTimeIndicator);
-        _MediaPlayerSuite.setOnPlaybackStateChange(this);
-        setTrackInfo(_MediaPlayerSuite.getTrack());
+        boolean isVisible = getUserVisibleHint();
+        if(isVisible) {
+            registerEvent();
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        _MediaPlayerSuite.setSeekBar(null);
-        _MediaPlayerSuite.setTimeIndicator(null);
-        _MediaPlayerSuite.setOnPlaybackStateChange(null);
+        unregisterEvent();
     }
 
     @Override
@@ -57,6 +58,7 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
         _MediaPlayerSuite = MediaPlayerSuite.getInstance();
         lblTrackTitle = (TextView) view.findViewById(R.id.title_text);
         lblTrackArtist = (TextView) view.findViewById(R.id.artist_text);
+        btnSwitch = (ImageButton) view.findViewById(R.id.switch_button);
         skbProgress = (SeekBar) view.findViewById(R.id.seeker);
         lblTimeIndicator = (TextView) view.findViewById(R.id.time_indicator_text);
         btnPrev = (ImageButton) view.findViewById(R.id.prev_button);
@@ -77,6 +79,13 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
 
     @Override
     protected void BindEvent() {
+        btnSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSwitchPlaylistClick();
+            }
+        });
+
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,11 +115,28 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
         });
     }
 
+    public void registerEvent() {
+        _MediaPlayerSuite.setSeekBar(skbProgress);
+        _MediaPlayerSuite.setTimeIndicator(lblTimeIndicator);
+        _MediaPlayerSuite.setOnPlaybackStateChangeListener(this);
+        setTrackInfo(_MediaPlayerSuite.getTrack());
+    }
+
+    public void unregisterEvent() {
+        _MediaPlayerSuite.setSeekBar(null);
+        _MediaPlayerSuite.setTimeIndicator(null);
+        _MediaPlayerSuite.setOnPlaybackStateChangeListener(null);
+    }
+
     private void setTrackInfo(MediaPlayerTrack track) {
-        if(track != null) {
+        if(track != null && !track.isEmpty()) {
             lblTrackTitle.setText(track.Title);
             lblTrackArtist.setText(track.Artist);
         }
+    }
+
+    public void setOnSwitchListener(OnSwitchListener l) {
+        this._SwitchListener = l;
     }
 
     @Override
@@ -133,5 +159,15 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
     @Override
     public void onStopPlayback(MediaPlayerTrack track) {
 
+    }
+
+    public interface OnSwitchListener {
+        void onSwitchPlaylistClick();
+    }
+
+    private void onSwitchPlaylistClick() {
+        if(_SwitchListener != null) {
+            _SwitchListener.onSwitchPlaylistClick();
+        }
     }
 }

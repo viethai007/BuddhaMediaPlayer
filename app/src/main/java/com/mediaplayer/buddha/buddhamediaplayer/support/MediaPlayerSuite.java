@@ -22,8 +22,8 @@ public class MediaPlayerSuite {
 
     private ArrayList<MediaPlayerTrack> listTrack;
 
-    private OnMessageListener messageListener;
-    private OnPlaybackStateChangeListener playbackStateChangeListener;
+    private OnMessageListener _MessageListener;
+    private OnPlaybackStateChangeListener _PlaybackStateChangeListener;
 
     private MediaPlayerTrack __track = null;
     private boolean __is_initialized = false;
@@ -120,7 +120,11 @@ public class MediaPlayerSuite {
                 int second = mediaPlayer.getDuration() / 1000;
                 seeker.setMax(second);
             }
-            seeker.setVisibility(View.INVISIBLE);
+            if(isPlaying()) {
+                seeker.setVisibility(View.VISIBLE);
+            } else {
+                seeker.setVisibility(View.INVISIBLE);
+            }
             seeker.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -257,12 +261,12 @@ public class MediaPlayerSuite {
     }
 
     public void setOnMessageListener(OnMessageListener l) {
-        this.messageListener = l;
+        this._MessageListener = l;
     }
 
     private void onMessage(String message) {
-        if(messageListener != null) {
-            messageListener.onMessage(message);
+        if(_MessageListener != null) {
+            _MessageListener.onMessage(message);
         }
     }
 
@@ -273,31 +277,31 @@ public class MediaPlayerSuite {
         void onStopPlayback(MediaPlayerTrack track);
     }
 
-    public void setOnPlaybackStateChange(OnPlaybackStateChangeListener l) {
-        this.playbackStateChangeListener = l;
+    public void setOnPlaybackStateChangeListener(OnPlaybackStateChangeListener l) {
+        this._PlaybackStateChangeListener = l;
     }
 
     private void onSetTrack(MediaPlayerTrack track) {
-        if(playbackStateChangeListener != null) {
-            playbackStateChangeListener.onSetTrack(track);
+        if(_PlaybackStateChangeListener != null) {
+            _PlaybackStateChangeListener.onSetTrack(track);
         }
     }
 
     private void onStartPlayback(MediaPlayerTrack track) {
-        if(playbackStateChangeListener != null) {
-            playbackStateChangeListener.onStartPlayback(track);
+        if(_PlaybackStateChangeListener != null) {
+            _PlaybackStateChangeListener.onStartPlayback(track);
         }
     }
 
     private void onPausePlayback(MediaPlayerTrack track) {
-        if(playbackStateChangeListener != null) {
-            playbackStateChangeListener.onPausePlayback(track);
+        if(_PlaybackStateChangeListener != null) {
+            _PlaybackStateChangeListener.onPausePlayback(track);
         }
     }
 
     private void onStopPlayback(MediaPlayerTrack track) {
-        if(playbackStateChangeListener != null) {
-            playbackStateChangeListener.onStopPlayback(track);
+        if(_PlaybackStateChangeListener != null) {
+            _PlaybackStateChangeListener.onStopPlayback(track);
         }
     }
 }

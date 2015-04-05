@@ -1,6 +1,7 @@
 package com.mediaplayer.buddha.buddhamediaplayer.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,39 @@ public class PlaylistAdapter extends ArrayAdapter<MediaPlayerTrack> {
         viewHolder.titleText.setText(item.Title);
         viewHolder.artistText.setText(item.Artist);
 
+        if(item.IsPlaying) {
+            viewHolder.titleText.setTypeface(null, Typeface.BOLD);
+            viewHolder.artistText.setTypeface(null, Typeface.BOLD);
+        } else {
+            viewHolder.titleText.setTypeface(null, Typeface.NORMAL);
+            viewHolder.artistText.setTypeface(null, Typeface.NORMAL);
+        }
+
         return convertView;
+    }
+
+    public void setSelectedItem(String uri) {
+        int trackCount = listTrack.size();
+        for(int i = 0; i < trackCount; i++) {
+            MediaPlayerTrack track = listTrack.get(i);
+            if(track.Uri == uri) {
+                track.IsPlaying = true;
+            }
+            else {
+                track.IsPlaying = false;
+            }
+        }
+    }
+
+    public void setViewParam(View view, MediaPlayerTrack track) {
+        ViewHolder viewHolder = (ViewHolder) view.getTag();
+        if(track.IsPlaying) {
+            viewHolder.titleText.setTypeface(null, Typeface.BOLD);
+            viewHolder.artistText.setTypeface(null, Typeface.BOLD);
+        } else {
+            viewHolder.titleText.setTypeface(null, Typeface.NORMAL);
+            viewHolder.artistText.setTypeface(null, Typeface.NORMAL);
+        }
     }
 
     private class ViewHolder {

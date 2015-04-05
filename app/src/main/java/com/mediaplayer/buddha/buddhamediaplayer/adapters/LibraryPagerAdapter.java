@@ -2,13 +2,14 @@ package com.mediaplayer.buddha.buddhamediaplayer.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryAlbumFragment;
 import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryArtistFragment;
 import com.mediaplayer.buddha.buddhamediaplayer.fragments.LibraryLocalFragment;
 
-public class LibraryPagerAdapter extends FragmentStatePagerAdapter {
+public class LibraryPagerAdapter extends FragmentPagerAdapter {
 
     public LibraryPagerAdapter(FragmentManager fm) {
         super(fm);
