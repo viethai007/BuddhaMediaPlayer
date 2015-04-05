@@ -24,9 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Home"/>
+            android:text="Home"
+            android:visibility="gone" />
         <View
-            style="@style/vertical_spectator_alternative"></View>
+            style="@style/vertical_spectator_alternative"
+            android:visibility="gone" ></View>
         <TextView
             android:id="@+id/now_playing_button"
             style="@style/menu_button"
@@ -51,17 +53,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="My Playlist"/>
+            android:text="My Playlist"
+            android:visibility="gone" />
         <View
-            style="@style/vertical_spectator_alternative"></View>
+            style="@style/vertical_spectator_alternative"
+            android:visibility="gone" ></View>
         <TextView
             android:id="@+id/setting_button"
             style="@style/menu_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Settings"/>
+            android:text="Settings"
+            android:visibility="gone" />
         <View
-            style="@style/vertical_spectator_alternative"></View>
+            style="@style/vertical_spectator_alternative"
+            android:visibility="gone" ></View>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

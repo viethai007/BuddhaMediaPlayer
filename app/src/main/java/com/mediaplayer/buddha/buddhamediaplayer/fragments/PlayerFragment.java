@@ -21,6 +21,7 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
     private ImageButton btnPrev;
     private ImageButton btnStop;
     private ImageButton btnPlay;
+    private ImageButton btnPause;
     private ImageButton btnNext;
 
     private MediaPlayerSuite _MediaPlayerSuite;
@@ -64,6 +65,7 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
         btnPrev = (ImageButton) view.findViewById(R.id.prev_button);
         btnStop = (ImageButton) view.findViewById(R.id.stop_button);
         btnPlay = (ImageButton) view.findViewById(R.id.play_button);
+        btnPause = (ImageButton) view.findViewById(R.id.pause_button);
         btnNext = (ImageButton) view.findViewById(R.id.next_button);
     }
 
@@ -107,6 +109,13 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
             }
         });
 
+        btnPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _MediaPlayerSuite.pausePlayback();
+            }
+        });
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +129,13 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
         _MediaPlayerSuite.setTimeIndicator(lblTimeIndicator);
         _MediaPlayerSuite.setOnPlaybackStateChangeListener(this);
         setTrackInfo(_MediaPlayerSuite.getTrack());
+        if(_MediaPlayerSuite.isPlaying()) {
+            btnPlay.setVisibility(View.GONE);
+            btnPause.setVisibility(View.VISIBLE);
+        } else {
+            btnPlay.setVisibility(View.VISIBLE);
+            btnPause.setVisibility(View.GONE);
+        }
     }
 
     public void unregisterEvent() {
@@ -148,17 +164,20 @@ public class PlayerFragment extends CoreFragment implements MediaPlayerSuite.OnP
 
     @Override
     public void onStartPlayback(MediaPlayerTrack track) {
-
+        btnPlay.setVisibility(View.GONE);
+        btnPause.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onPausePlayback(MediaPlayerTrack track) {
-
+        btnPlay.setVisibility(View.VISIBLE);
+        btnPause.setVisibility(View.GONE);
     }
 
     @Override
     public void onStopPlayback(MediaPlayerTrack track) {
-
+        btnPlay.setVisibility(View.VISIBLE);
+        btnPause.setVisibility(View.GONE);
     }
 
     public interface OnSwitchListener {

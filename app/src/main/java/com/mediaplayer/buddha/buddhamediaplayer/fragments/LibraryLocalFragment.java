@@ -66,6 +66,7 @@ public class LibraryLocalFragment extends CoreFragment {
                 MediaPlayerSuite _MediaPlayerSuite = MediaPlayerSuite.getInstance();
                 _MediaPlayerSuite.setTrack(track);
                 _MediaPlayerSuite.setPlayList(listTrack);
+                _MediaPlayerSuite.startPlayback();
                 Intent intent = new Intent();
                 intent.addCategory(Intent.CATEGORY_DEFAULT);
                 intent.setClass(getActivity(), NowPlayingActivity.class);

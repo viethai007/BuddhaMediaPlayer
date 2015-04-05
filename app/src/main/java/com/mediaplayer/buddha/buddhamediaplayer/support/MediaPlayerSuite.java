@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MediaPlayerSuite {
+    private static final String TIME_INDICATOR_FORMAT = "%d:%02d";
+
     private static MediaPlayerSuite instance;
 
     private MediaPlayer mediaPlayer;
@@ -77,7 +79,7 @@ public class MediaPlayerSuite {
         return instance;
     }
 
-    private boolean isPlaying() {
+    public boolean isPlaying() {
         if(mediaPlayer == null) {
             return false;
         }
@@ -96,12 +98,15 @@ public class MediaPlayerSuite {
             int second = millisecond / 1000;
             int minute = second / 60;
             second = second % 60;
-            lblCurrentTime.setText(String.format("%d:%02d", minute, second));
+            lblCurrentTime.setText(String.format(TIME_INDICATOR_FORMAT, minute, second));
         }
     }
 
     public void setTimeIndicator(TextView lblCurrentTime) {
         this.lblCurrentTime = lblCurrentTime;
+        if(this.lblCurrentTime != null) {
+            this.lblCurrentTime.setText(String.format(TIME_INDICATOR_FORMAT, 0, 0));
+        }
     }
 
     public ArrayList<MediaPlayerTrack> getPlaylist() {
@@ -223,6 +228,9 @@ public class MediaPlayerSuite {
         }
         if(seeker != null) {
             seeker.setVisibility(View.INVISIBLE);
+        }
+        if(lblCurrentTime != null) {
+            lblCurrentTime.setText(String.format(TIME_INDICATOR_FORMAT, 0, 0));
         }
         __track.Position = __last_position;
         onStopPlayback(__track);
