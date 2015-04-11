@@ -1,6 +1,7 @@
 package com.mediaplayer.buddha.buddhamediaplayer.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -54,7 +55,7 @@ public class LibraryFragment extends CoreFragment {
     }
 
     @Override
-    protected void LoadData() {
+    protected void loadData() {
         listTabIndicator = new ArrayList<TextView>();
         listTabIndicator.add(lblArtistTab);
         listTabIndicator.add(lblAlbumTab);
@@ -62,14 +63,14 @@ public class LibraryFragment extends CoreFragment {
     }
 
     @Override
-    protected void UpdateUI() {
+    protected void updateUI() {
         adapterFragment = new LibraryPagerAdapter(fragmentManager);
         pagerFragment.setAdapter(adapterFragment);
         setSelectedTab(0);
     }
 
     @Override
-    protected void BindEvent() {
+    protected void bindEvent() {
         pagerFragment.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -95,7 +96,7 @@ public class LibraryFragment extends CoreFragment {
             tab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int index = (int) v.getTag();
+                    int index = (Integer) v.getTag();
                     if(__selectedTabIndex != index) {
                         pagerFragment.setCurrentItem(index);
                     }

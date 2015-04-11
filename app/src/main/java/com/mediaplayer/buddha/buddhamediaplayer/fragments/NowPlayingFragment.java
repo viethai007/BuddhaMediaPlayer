@@ -30,12 +30,12 @@ public class NowPlayingFragment extends CoreFragment
     }
 
     @Override
-    protected void LoadData() {
+    protected void loadData() {
 
     }
 
     @Override
-    protected void UpdateUI() {
+    protected void updateUI() {
         adapterFragment = new NowPlayingPagerAdapter(fragmentManager);
         adapterFragment.setPlayerOnSwitchListener(this);
         adapterFragment.setPlaylistOnSwitchListener(this);
@@ -43,7 +43,7 @@ public class NowPlayingFragment extends CoreFragment
     }
 
     @Override
-    protected void BindEvent() {
+    protected void bindEvent() {
         pagerFragment.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

@@ -51,7 +51,7 @@ public class MediaPlayerSuite {
             }
         });
 
-        listTrack = new ArrayList<>();
+        listTrack = new ArrayList<MediaPlayerTrack>();
 
         runnableUpdateSeekBar = new Runnable() {
             @Override

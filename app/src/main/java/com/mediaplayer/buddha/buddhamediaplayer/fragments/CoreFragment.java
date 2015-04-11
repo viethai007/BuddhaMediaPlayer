@@ -1,16 +1,16 @@
 package com.mediaplayer.buddha.buddhamediaplayer.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.mediaplayer.buddha.buddhamediaplayer.R;
 
 public abstract class CoreFragment extends Fragment {
+    protected FragmentActivity activity;
     protected FragmentManager fragmentManager;
 
     public CoreFragment() {
@@ -21,21 +21,33 @@ public abstract class CoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        activity = getActivity();
         fragmentManager = getFragmentManager();
         int layoutId = getLayoutId();
         View view = inflater.inflate(layoutId, null, false);
         Init(view);
-        LoadData();
-        UpdateUI();
-        BindEvent();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                loadData();
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateUI();
+                        bindEvent();
+                    }
+                });
+            }
+        });
+
         return view;
     }
 
     protected abstract void Init(View view);
 
-    protected abstract void LoadData();
+    protected abstract void loadData();
 
-    protected abstract void UpdateUI();
+    protected abstract void updateUI();
 
-    protected abstract void BindEvent();
+    protected abstract void bindEvent();
 }

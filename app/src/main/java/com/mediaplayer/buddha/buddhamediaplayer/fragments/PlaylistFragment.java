@@ -56,18 +56,18 @@ public class PlaylistFragment extends CoreFragment implements MediaPlayerSuite.O
     }
 
     @Override
-    protected void LoadData() {
+    protected void loadData() {
         listTrack = _MediaPlayerSuite.getPlaylist();
     }
 
     @Override
-    protected void UpdateUI() {
+    protected void updateUI() {
         adptTrack = new PlaylistAdapter(getActivity(), 0, listTrack);
         lsvwTrack.setAdapter(adptTrack);
     }
 
     @Override
-    protected void BindEvent() {
+    protected void bindEvent() {
         btnSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

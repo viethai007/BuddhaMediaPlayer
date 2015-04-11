@@ -64,27 +64,50 @@
                     android:id="@+id/prev_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_media_previous" />
                 <ImageButton
                     android:id="@+id/stop_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_media_stop" />
-                <ImageButton
-                    android:id="@+id/play_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_media_play" />
                 <ImageButton
                     android:id="@+id/pause_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_media_pause" />
+                <ImageButton
+                    android:id="@+id/play_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_media_play" />
                 <ImageButton
                     android:id="@+id/next_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_media_next" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_media_blank"
+                    android:visibility="invisible"/>
+                <ImageButton
+                    android:id="@+id/shuffle_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_media_shuffle" />
+                <ImageButton
+                    android:id="@+id/repeat_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_media_repeat" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"

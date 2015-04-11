@@ -31,17 +31,17 @@ public class LibraryArtistFragment extends CoreFragment {
     }
 
     @Override
-    protected void LoadData() {
+    protected void loadData() {
 
     }
 
     @Override
-    protected void UpdateUI() {
+    protected void updateUI() {
 
     }
 
     @Override
-    protected void BindEvent() {
+    protected void bindEvent() {
 
     }
 }

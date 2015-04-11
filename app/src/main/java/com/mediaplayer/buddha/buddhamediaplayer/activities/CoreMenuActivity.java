@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -81,15 +82,19 @@ public abstract class CoreMenuActivity extends CoreActivity {
 
     @Override
     protected void updateUI() {
+        actionBar.setDisplayShowHomeEnabled(true); // show icon
         actionBar.setIcon(R.drawable.logo);
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayUseLogoEnabled(true); // use logo if available, if home enable
+        actionBar.setLogo(R.drawable.logo);
+        actionBar.setDisplayShowTitleEnabled(true); // show title
+        actionBar.setHomeButtonEnabled(false); // click on icon or title, no indicator
+        actionBar.setDisplayHomeAsUpEnabled(true); // click on icon or title with indicator, override above
         actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
     }
 
     @Override
     protected void bindEvent() {
-        drawer.setDrawerListener(new ActionBarDrawerToggle(context, drawer, R.string.drawer_open, R.string.drawer_close) {
+        drawer.setDrawerListener(new ActionBarDrawerToggle(this, drawer, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
              public void onDrawerClosed(View view) {
                  super.onDrawerClosed(view);
              }

@@ -47,18 +47,18 @@ public class LibraryLocalFragment extends CoreFragment {
     }
 
     @Override
-    protected void LoadData() {
+    protected void loadData() {
         listTrack = svcLocalMedia.getAllTrack();
     }
 
     @Override
-    protected void UpdateUI() {
+    protected void updateUI() {
         adapterPlaylist = new PlaylistAdapter(getActivity(), 0, listTrack);
         listviewPlaylist.setAdapter(adapterPlaylist);
     }
 
     @Override
-    protected void BindEvent() {
+    protected void bindEvent() {
         listviewPlaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
